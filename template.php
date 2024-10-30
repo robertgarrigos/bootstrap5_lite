@@ -73,6 +73,22 @@ function bootstrap5_lite_css_alter(&$css) {
       'weight' => -1,
     );
   }
+  if ($font_awesome = theme_get_setting('bootstrap5_lite_font_awesome')) {
+    $awesome = 'https://stackpath.bootstrapcdn.com/font-awesome/' . $font_awesome . '/css/font-awesome.min.css';
+    $css[$awesome] = array(
+      'data' => $awesome,
+      'type' => 'external',
+      'every_page' => TRUE,
+      'every_page_weight' => -1,
+      'media' => 'all',
+      'preprocess' => FALSE,
+      'group' => CSS_THEME,
+      'browsers' => array('IE' => TRUE, '!IE' => TRUE),
+      'weight' => -2,
+      'attributes' => array(),
+    );
+  }
+
 }
 
 /**
@@ -1034,9 +1050,6 @@ function bootstrap5_lite_preprocess_node(&$variables) {
   }
 }
 
-/**
- * Overrides theme_progress_bar().
- */
 function bootstrap5_lite_progress_bar($variables) {
   $output = '<div id="progress">';
   $output .= '<div class="progress">';

@@ -131,6 +131,18 @@ function bootstrap5_lite_form_system_theme_settings_alter(&$form, &$form_state, 
     '#empty_option' => t('Normal'),
   );
 
+  $form['navbar']['bootstrap5_lite_navbar_style'] = array(
+    '#type' => 'select',
+    '#options' => array(
+      'bg-primary' => t('Primary'),
+      'bg-dark' => t('Dark'),
+      'bg-light' => t('Light'),
+    ),
+    '#title' => t('Navbar background style'),
+    '#description' => t('Select the background navbar style.'),
+    '#default_value' => theme_get_setting('bootstrap5_lite_navbar_style', $theme_name),
+  );
+
   $form['navbar']['bootstrap5_lite_navbar_inverse'] = array(
     '#type' => 'checkbox',
     '#title' => t('Inverse navbar style'),
