@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * theme-settings.php
@@ -31,7 +32,7 @@ function bootstrap5_lite_form_system_theme_settings_alter(&$form, &$form_state, 
       '!bootstrapcdn' => l(t('Bootstrap CDN'), 'http://ww.bootstrapcdn.com', array(
         'external' => TRUE,
       )),
-    '!warning' => '<div class="alert alert-info messages info"><strong>' . t('NOTE') . ':</strong> ' . t('While the Bootstrap CDN (content distribution network) is the preferred method for providing performance gains in load time, this method does depend on using this third party service. BootstrapCDN is under no obligation or commitment to provide guaranteed up-time or service quality for this theme.') . '</div>',
+      '!warning' => '<div class="alert alert-info messages info"><strong>' . t('NOTE') . ':</strong> ' . t('While the Bootstrap CDN (content distribution network) is the preferred method for providing performance gains in load time, this method does depend on using this third party service. BootstrapCDN is under no obligation or commitment to provide guaranteed up-time or service quality for this theme.') . '</div>',
     )),
     '#group' => 'bootstrap',
     '#collapsible' => TRUE,
@@ -131,6 +132,18 @@ function bootstrap5_lite_form_system_theme_settings_alter(&$form, &$form_state, 
     '#empty_option' => t('Normal'),
   );
 
+  $form['navbar']['bootstrap5_lite_navbar_style'] = array(
+    '#type' => 'select',
+    '#options' => array(
+      'bg-primary' => t('Primary'),
+      'bg-dark' => t('Dark'),
+      'bg-light' => t('Light'),
+    ),
+    '#title' => t('Navbar background style'),
+    '#description' => t('Select the background navbar style.'),
+    '#default_value' => theme_get_setting('bootstrap5_lite_navbar_style', $theme_name),
+  );
+
   $form['navbar']['bootstrap5_lite_navbar_inverse'] = array(
     '#type' => 'checkbox',
     '#title' => t('Inverse navbar style'),
@@ -192,7 +205,6 @@ function bootstrap5_lite_form_system_theme_settings_alter(&$form, &$form_state, 
     '#default_value' => theme_get_setting('bootstrap5_lite_datetime', $theme_name),
     '#description' => t('If enabled, replace date output for nodes and comments by "XX time ago".'),
   );
-
 }
 
 function bootstrap_bootswatch_template($bootswatch_theme) {
@@ -200,7 +212,7 @@ function bootstrap_bootswatch_template($bootswatch_theme) {
 
   if (isset($bootswatch_theme['thumbnail'])) {
     $output .= '<div class="image">
-      <img src="' . $bootswatch_theme['thumbnail']. '" class="img-responsive" alt="' . $bootswatch_theme['name'] . '">
+      <img src="' . $bootswatch_theme['thumbnail'] . '" class="img-responsive" alt="' . $bootswatch_theme['name'] . '">
     </div>';
   }
   $output .= '<div class="options">
@@ -208,7 +220,7 @@ function bootstrap_bootswatch_template($bootswatch_theme) {
       <p>' . $bootswatch_theme['description'] . '</p>';
   if (isset($bootswatch_theme['preview'])) {
     $output .= '<div class="btn-group"><a class="btn btn-info" href="' . $bootswatch_theme['preview'] . '" target="_blank">' . t('Preview') . '</a></div>';
-  }else{
+  } else {
     $output .= '<div class="btn-group"><a class="btn btn-default disabled" href="#" target="_blank">' . t('No preview') . '</a></div>';
   }
   $output .= '</div>
