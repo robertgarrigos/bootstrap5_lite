@@ -50,7 +50,7 @@ function bootstrap5_lite_form_system_theme_settings_alter(&$form, &$form_state, 
       '5.3.3' => t('5.3.3 (CDN)'),
       'module' => t('5.3.3 (bundled)'),
     ),
-    '#default_value' => $bootstrap_version = theme_get_setting('bootstrap5_lite_cdn', $theme_name),
+    '#default_value' => theme_get_setting('bootstrap5_lite_cdn', $theme_name),
     '#empty_option' => t('Disabled'),
     '#empty_value' => NULL,
   );
