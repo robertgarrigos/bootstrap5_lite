@@ -103,7 +103,7 @@ function bootstrap5_lite_js_alter(&$js) {
   if ($cdn_version) {
     if ($cdn_version == 'module') {
       // Use bundled library
-      $js_src = '/' . $theme_path . '/bootstrap/js/bootstrap.min.js';
+      $js_src = '/' . $theme_path . '/bootstrap/js/bootstrap.bundle.min.js';
       $js[$js_src] = array(
         'data' => $js_src,
         'type' => 'file',
@@ -114,7 +114,7 @@ function bootstrap5_lite_js_alter(&$js) {
     }
     else {
       // Use CDN
-      $js_src = 'https://cdn.jsdelivr.net/npm/bootstrap@' . $cdn_version . '/dist/js/bootstrap.min.js';
+      $js_src = 'https://cdn.jsdelivr.net/npm/bootstrap@' . $cdn_version . '/dist/js/bootstrap.bundle.min.js';
       $js[$js_src] = array(
         'data' => $js_src,
         'type' => 'external',
