@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * theme-settings.php
@@ -31,23 +32,29 @@ function bootstrap5_lite_form_system_theme_settings_alter(&$form, &$form_state, 
       '!bootstrapcdn' => l(t('Bootstrap CDN'), 'http://ww.bootstrapcdn.com', array(
         'external' => TRUE,
       )),
-    '!warning' => '<div class="alert alert-info messages info"><strong>' . t('NOTE') . ':</strong> ' . t('While the Bootstrap CDN (content distribution network) is the preferred method for providing performance gains in load time, this method does depend on using this third party service. BootstrapCDN is under no obligation or commitment to provide guaranteed up-time or service quality for this theme.') . '</div>',
+      '!warning' => '<div class="alert alert-info messages info"><strong>' . t('NOTE') . ':</strong> ' . t('While the Bootstrap CDN (content distribution network) is the preferred method for providing performance gains in load time, this method does depend on using this third party service. BootstrapCDN is under no obligation or commitment to provide guaranteed up-time or service quality for this theme.') . '</div>',
     )),
     '#group' => 'bootstrap',
     '#collapsible' => TRUE,
     '#collapsed' => TRUE,
   );
-
+  // Deals with bootstrap update from 5.3.1 to 5.3.3
+  if (theme_get_setting('bootstrap5_lite_cdn', $theme_name) == '5.3.1') {
+    $bootstrap_version = '5.3.3';
+    backdrop_set_message(t('Your bootstrap version 5.3.1 have been updated to 5.3.3'), 'warning');
+  } else {
+    $bootstrap_version = theme_get_setting('bootstrap5_lite_cdn', $theme_name);
+  }
   $form['bootstrap5_lite_cdn']['bootstrap5_lite_cdn'] = array(
     '#type' => 'select',
     '#title' => t('Bootstrap version'),
     '#options' => array(
       '5.0.1' => t('5.0.1 (CDN)'),
       '5.1.3' => t('5.1.3 (CDN)'),
-      '5.3.1' => t('5.3.1 (CDN)'),
-      'module' => t('5.3.1 (bundled)'),
+      '5.3.3' => t('5.3.3 (CDN)'),
+      'module' => t('5.3.3 (bundled)'),
     ),
-    '#default_value' => theme_get_setting('bootstrap5_lite_cdn', $theme_name),
+    '#default_value' => $bootstrap_version,
     '#empty_option' => t('Disabled'),
     '#empty_value' => NULL,
   );
@@ -192,7 +199,6 @@ function bootstrap5_lite_form_system_theme_settings_alter(&$form, &$form_state, 
     '#default_value' => theme_get_setting('bootstrap5_lite_datetime', $theme_name),
     '#description' => t('If enabled, replace date output for nodes and comments by "XX time ago".'),
   );
-
 }
 
 function bootstrap_bootswatch_template($bootswatch_theme) {
@@ -200,7 +206,7 @@ function bootstrap_bootswatch_template($bootswatch_theme) {
 
   if (isset($bootswatch_theme['thumbnail'])) {
     $output .= '<div class="image">
-      <img src="' . $bootswatch_theme['thumbnail']. '" class="img-responsive" alt="' . $bootswatch_theme['name'] . '">
+      <img src="' . $bootswatch_theme['thumbnail'] . '" class="img-responsive" alt="' . $bootswatch_theme['name'] . '">
     </div>';
   }
   $output .= '<div class="options">
@@ -208,7 +214,7 @@ function bootstrap_bootswatch_template($bootswatch_theme) {
       <p>' . $bootswatch_theme['description'] . '</p>';
   if (isset($bootswatch_theme['preview'])) {
     $output .= '<div class="btn-group"><a class="btn btn-info" href="' . $bootswatch_theme['preview'] . '" target="_blank">' . t('Preview') . '</a></div>';
-  }else{
+  } else {
     $output .= '<div class="btn-group"><a class="btn btn-default disabled" href="#" target="_blank">' . t('No preview') . '</a></div>';
   }
   $output .= '</div>
