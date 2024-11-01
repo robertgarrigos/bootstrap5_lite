@@ -35,14 +35,14 @@ Differences from Bootstrap 3
 
 This theme uses the Bootstrap 5 library (versus the [Bootstrap Lite](https://backdropcms.org/project/bootstrap_lite) theme that uses Bootstrap 3).
 
-Note that Bootstrap 5 has different icons than Bootstrap 3 did. In Bootstrap 3, icons are provided from the Glyphicon Halflings font, while Bootstrap 5 is intended to use [Bootstrap Icons](https://icons.getbootstrap.com), which is a set of SVG icons in a separate library and uses different HTML to render. You can use Boostrap Icons in your site by installing the [Bootstrap Icons](https://backdropcms.org/project/bootstrap_icons) contrib module. 
+Note that Bootstrap 5 has different icons than Bootstrap 3 did. In Bootstrap 3, icons are provided from the Glyphicon Halflings font, while Bootstrap 5 is intended to use [Bootstrap Icons](https://icons.getbootstrap.com), which is a set of SVG icons in a separate library and uses different HTML to render. You can use Boostrap Icons in your site by installing the [Bootstrap Icons](https://backdropcms.org/project/bootstrap_icons) contrib module.
 
 Examples:
 
 * Bootstrap 3 cart icon: `<i class="glyphicon glyphicon-shopping-cart"></i>`
 * Bootstrap 5 cart icon: `<i class="bi bi-cart"></i>`
 
-You can also use Font Awesome 4 and/or 5 icons, which are provided by the [FontAwesome](https://backdropcms.org/project/fontawesome) contrib module. 
+You can also use Font Awesome 4 and/or 5 icons, which are provided by the [FontAwesome](https://backdropcms.org/project/fontawesome) contrib module.
 
 If you enable a Font Awesome library, this would also provide a cart icon:
 
@@ -73,7 +73,8 @@ Current Maintainers
 -------------------
 
 - [Andy Shillingford](https://github.com/docwilmot)
-- [ Robert J. Lang](https://github.com/bugfolder)
+- [Robert J. Lang](https://github.com/bugfolder)
+- [Robert Garrigós](https://github.com/robertgarrigos)
 
 Credits
 -------
