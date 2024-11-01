@@ -37,17 +37,24 @@ function bootstrap5_lite_form_system_theme_settings_alter(&$form, &$form_state, 
     '#collapsible' => TRUE,
     '#collapsed' => TRUE,
   );
-
+  // Deal with bootstrap update from 5.3.1 to 5.3.3
+  if (theme_get_setting('bootstrap5_lite_cdn', $theme_name) == '5.3.1') {
+    $bootstrap_version = '5.3.3';
+    backdrop_set_message(t('Your bootstrap version 5.3.1 have been updated to 5.3.3'), 'warning');
+  }
+  else {
+    $bootstrap_version = theme_get_setting('bootstrap5_lite_cdn', $theme_name);
+  }
   $form['bootstrap5_lite_cdn']['bootstrap5_lite_cdn'] = array(
     '#type' => 'select',
     '#title' => t('Bootstrap version'),
     '#options' => array(
       '5.0.1' => t('5.0.1 (CDN)'),
       '5.1.3' => t('5.1.3 (CDN)'),
-      '5.3.1' => t('5.3.1 (CDN)'),
-      'module' => t('5.3.1 (bundled)'),
+      '5.3.3' => t('5.3.3 (CDN)'),
+      'module' => t('5.3.3 (bundled)'),
     ),
-    '#default_value' => theme_get_setting('bootstrap5_lite_cdn', $theme_name),
+    '#default_value' => $bootstrap_version,
     '#empty_option' => t('Disabled'),
     '#empty_value' => NULL,
   );
