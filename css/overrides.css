@@ -347,3 +347,7 @@ span.password-toggle-wrapper {
 .cyborg .menu-dropdown a {
   color: #888888;
 }
+
+.placeholder {
+  background-color: transparent;
+}
