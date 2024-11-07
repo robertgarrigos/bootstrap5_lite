@@ -348,6 +348,6 @@ span.password-toggle-wrapper {
   color: #888888;
 }
 
-.placeholder {
+.messages .placeholder {
   background-color: transparent;
 }
