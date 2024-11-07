@@ -348,6 +348,34 @@ span.password-toggle-wrapper {
   color: #888888;
 }
 
+
+/**
+ * @file
+ * Card listing view on the default home page.
+ */
+
+.views-view-grid-cols-3 {
+  grid-template-columns: repeat(1, 1fr);
+}
+.views-view-grid .views-grid-box {
+  border: none;
+  padding: 0 0 1rem 0;
+  background-color: #ffffff;
+}
+.views-grid-box h2 {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+.views-grid-box .views-field-field-image {
+  padding: 0;
+}
+@media (min-width: 48em) {
+  .views-view-grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
 .messages .placeholder {
   background-color: transparent;
+
 }
