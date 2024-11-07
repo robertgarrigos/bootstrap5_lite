@@ -348,6 +348,7 @@ span.password-toggle-wrapper {
   color: #888888;
 }
 
+
 /**
  * @file
  * Card listing view on the default home page.
@@ -373,4 +374,8 @@ span.password-toggle-wrapper {
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
   }
+
+.messages .placeholder {
+  background-color: transparent;
+
 }

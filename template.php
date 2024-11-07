@@ -205,6 +205,17 @@ function bootstrap5_lite_preprocess_page(&$variables) {
   foreach ($user->roles as $role) {
     $variables['classes'][] = 'role-' . $role;
   }
+
+  $navbar_style = theme_get_setting('bootstrap5_lite_navbar_style');
+  if ($navbar_style == 'bg-primary') {
+    $variables['navbar_classes_array'][] = 'navbar-dark bg-primary';
+  }
+  elseif ($navbar_style == 'bg-dark') {
+    $variables['navbar_classes_array'][] = 'navbar-dark bg-dark';
+  }
+  else {
+    $variables['navbar_classes_array'][] = 'navbar-light bg-light';
+  }
 }
 
 /**

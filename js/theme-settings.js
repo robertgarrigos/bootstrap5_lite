@@ -37,6 +37,8 @@
         summary.push(navbar_position);
         var menu_position = 'Menu position: ' + $context.find('select[name="bootstrap5_lite_navbar_menu_position"] :selected').text();
         summary.push(menu_position);
+        var navbar_style = 'Style: ' + $context.find('select[name="bootstrap5_lite_navbar_style"] :selected').text();
+        summary.push(navbar_style);
         if ($context.find(':input[name="bootstrap5_lite_navbar_inverse"]').is(':checked')) {
           summary.push(Backdrop.t('Inverse navbar'));
         }
