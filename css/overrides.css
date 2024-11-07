@@ -419,7 +419,8 @@ body.yeti .dropbutton .dropbutton-action a:hover { color: #0079a5; }
   background-color: transparent;
 }
 
-.l-top {
+.l-top,
+.l-wrapper {
   margin-top: 1rem;
 }
 
